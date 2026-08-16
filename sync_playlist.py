@@ -10,7 +10,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
-SHEET_RANGE = 'Library!A2:G'
+SHEET_RANGE = 'Foglio1!A2:G'
 HEADERS = ['Track name', 'Artist name', 'Album', 'Playlist name', 'Type', 'ISRC', 'Spotify - id']
 
 
@@ -102,7 +102,7 @@ def rewrite_sheet(sheets, sheet_id, playlist_name, tracks):
     rows = [[t['name'], t['artist'], t['album'], playlist_name, 'Playlist', t['isrc'], t['id']] for t in tracks]
     sheets.spreadsheets().values().update(
         spreadsheetId=sheet_id,
-        range='Library!A2',
+        range='Foglio1!A2',
         valueInputOption='RAW',
         body={'values': rows}
     ).execute()
